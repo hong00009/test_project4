@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>index</h1>
+{% for page in pages %}
+    <a href="{% url 'pages:detail' id=page.id %}">[글번호{{page.id}}] {{page.title}}</a>
+    <hr>
+{% endfor %}
+{% endblock %}

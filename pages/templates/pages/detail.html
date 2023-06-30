@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{page.title}}</h2>
+<p>{{page.content}}</p>
+<hr>
+
+<h3>comments</h3>
+{% for comment in comments %}
+    <p>{{comment.content}} <b>[{{comment.get_choice_display}} 선택]</b></p>
+{% endfor %}
+<hr>
+
+<form action="{% url 'pages:comments_create' page.id %}" method="POST">
+    {% csrf_token %}
+    {{comment_form}}
+    <input type="submit">
+</form>
+<hr>
+
+{% endblock %}
